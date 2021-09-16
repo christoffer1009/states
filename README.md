@@ -17,6 +17,7 @@
 - id: inteiro que autoincrementa, não nulo e chave primária
 - nome: string não nulo
 - regiao: string não nulo
+- capital: string não nulo
 - populacao: inteiro não nulo
 - area: float não nulo
 
@@ -25,8 +26,8 @@
     "id": "1",
     "nome": "Rio Grande do Norte",
     "regiao": "Nordeste",
-    "populacao": 3409000,
     "capital": "Natal",
+    "populacao": 3409000,
     "area": 52.797
 }
 
