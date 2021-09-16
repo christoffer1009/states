@@ -1,31 +1,24 @@
-#API de avaliação <h1>
+# API de avaliação
 
 ## Rotas
 
-*POST -/api/states
-Cria um estado a partir de um objeto enviado no body da requisição
+- POST -/api/states - Cria um estado a partir de um objeto enviado no body da requisição
 
-*GET -/api/states
-Retorna todos os estados
+- GET -/api/states - Retorna todos os estados
 
-*GET -/api/states/{id}
-Retorna o estado com o id passado no parametro da url
+- GET -/api/states/{id} - Retorna o estado com o id passado no parametro da url
 
-*PUT -/api/states/{id}
-Atualiza o estado cujo id é o passado na url de acordo com os dados passados no corpo da requisição
+- PUT -/api/states/{id} - Atualiza o estado cujo id é o passado na url de acordo com os dados passados no corpo da requisição
 
-*DELETE -/api/states/{id}
-Deleta o estado cujo id é o passado na url
-
+- DELETE -/api/states/{id} - Deleta o estado cujo id é o passado na url
 
 ## A estrutura do objeto é a seguinte:
 
-
-*id: inteiro que autoincrementa, não nulo e chave primária
-*nome: string não nulo
-*regiao: string não nulo
-*populacao: inteiro não nulo
-*area: float não nulo
+- id: inteiro que autoincrementa, não nulo e chave primária
+- nome: string não nulo
+- regiao: string não nulo
+- populacao: inteiro não nulo
+- area: float não nulo
 
 ```
 {
@@ -38,6 +31,7 @@ Deleta o estado cujo id é o passado na url
 }
 
 ```
+
 ```
 {
     "id": 2,
@@ -48,7 +42,8 @@ Deleta o estado cujo id é o passado na url
     "area": 148894
 }
 ```
-##BAnco de dados
+
+## BAnco de dados
 
 MySQL - dados devem ser inseridos no arquivo .env
 
