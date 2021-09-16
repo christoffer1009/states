@@ -26,7 +26,7 @@ const States = sequelize.define(
       allowNull: false,
     },
     area: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
   },
