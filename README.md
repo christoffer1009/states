@@ -1,6 +1,6 @@
-#API de avaliação
+#API de avaliação <h1>
 
-##Rotas
+##Rotas <h2>
 
 *POST -/api/states
 Cria um estado a partir de um objeto enviado no body da requisição
@@ -18,7 +18,7 @@ Atualiza o estado cujo id é o passado na url de acordo com os dados passados no
 Deleta o estado cujo id é o passado na url
 
 
-##A estrutura do objeto é a seguinte:
+##A estrutura do objeto é a seguinte: <h2>
 
 
 *id: inteiro que autoincrementa, não nulo e chave primária
@@ -48,7 +48,7 @@ Deleta o estado cujo id é o passado na url
     "area": 148894
 }
 ```
-##BAnco de dados
+##BAnco de dados <h2>
 
 MySQL - dados devem ser inseridos no arquivo .env
 
