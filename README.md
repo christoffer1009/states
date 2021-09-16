@@ -44,3 +44,15 @@ area: float não nulo
     "populacao": 9240580,
     "area": 148894
 }
+
+##BAnco de dados
+
+SQL
+dados devem ser inseridos no arquivo .env
+
+MYSQL_HOST
+MYSQL_PORT
+MYSQL_USER
+MYQL_PASSWORD
+MYSQL_DB
+PORT
