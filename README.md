@@ -1,5 +1,10 @@
 # API de avaliação
 
+## Instalação
+
+- npm install
+- npm start
+
 ## Rotas
 
 - POST -/api/states - Cria um estado a partir de um objeto enviado no body da requisição
@@ -14,12 +19,12 @@
 
 ## A estrutura do objeto é a seguinte:
 
-- id: inteiro que autoincrementa, não nulo e chave primária
-- nome: string não nulo
-- regiao: string não nulo
-- capital: string não nulo
-- populacao: inteiro não nulo
-- area: float não nulo
+- id: inteiro que autoincrementa, não-nulo e chave primária
+- nome: string não-nulo
+- regiao: string não-nulo
+- capital: string não-nulo
+- populacao: inteiro não-nulo
+- area: float não-nulo
 
 ```
 {

@@ -1,12 +1,16 @@
 const State = require("../models/states");
 const db = require("../database/db");
+const ApiError = require("../errors/ApiError");
+const { ValidationError } = require("sequelize");
+const handle = require("../errors/handler");
 
 const getAll = async (req, res) => {
   try {
     const states = await State.findAll();
     res.status(200).json(states);
   } catch (err) {
-    res.json(err);
+    res.status(500);
+    console.error(err);
   }
 };
 
@@ -16,13 +20,14 @@ const getByid = async (req, res) => {
     const state = await State.findOne({ where: { id: id } });
 
     if (!state) {
-      res.status(404).json({ erro: "Não encontrado" });
-    } else {
-      res.status(200).json(state);
+      throw new ApiError("Não encontrado", 404);
     }
+    res.status(200).json(state);
   } catch (err) {
-    if (err) {
-      res.send({ error });
+    if (err instanceof ApiError) {
+      res.status(err.statusCode).json({ err });
+    } else {
+      console.error(err);
     }
   }
 };
@@ -40,8 +45,12 @@ const createState = async (req, res) => {
     await State.create(state);
     res.status(201).json({ msg: "Estado criado com sucesso." });
   } catch (err) {
-    console.log(err);
-    res.status(400).json(err);
+    if (err instanceof ValidationError) {
+      messages = handle(err);
+      res.json(messages);
+    } else {
+      res.json(err);
+    }
   }
 };
 
@@ -50,21 +59,29 @@ const updateState = async (req, res) => {
     const data = req.body;
     const id = req.params.id;
     const state = await State.findOne({ where: { id: id } });
-    console.log(state);
-    console.log(data);
+
     if (state) {
-      //existe
-      if (Object.keys(data).length != 0) {
+      if (Object.keys(data).length == 0) {
+        throw new ApiError("Sem dados para atualizar", 400);
+      } else {
         await State.update(data, { where: { id } });
         res.status(200).json({ msg: "Estado atualizado com sucesso." });
-      } else {
-        res.json({ msg: "Sem dados para atualizar." });
       }
     } else {
-      res.json({ msg: "Estado não encontrado" });
+      throw new ApiError("Estado não encontrado", 404);
     }
   } catch (err) {
-    res.json(err);
+    if (err instanceof ApiError) {
+      res.status(err.statusCode).json({ err });
+    }
+
+    if (err instanceof ValidationError) {
+      messages = handle(err);
+      res.json(messages);
+    }
+
+    console.error(err);
+    res.status(500);
   }
 };
 
@@ -77,10 +94,14 @@ const deleteState = async (req, res) => {
       await State.destroy({ where: { id } });
       res.status(200).json({ msg: "Estado deletado com sucesso." });
     } else {
-      res.json({ msg: "Não encontrado." });
+      throw new ApiError("Estado não encontrado", 404);
     }
   } catch (err) {
-    res.json(err);
+    if (err instanceof ApiError) {
+      res.status(err.statusCode).json({ err });
+    } else {
+      console.error(err);
+    }
   }
 };
 
