@@ -51,7 +51,7 @@
 
 ## Banco de dados
 
-MySQL - dados devem ser inseridos no arquivo .env
+MySQL - dados devem ser inseridos no arquivo .env, dados são inseridos em **MYSQL_DB** na tabela **states**
 
 ```
 MYSQL_HOST
