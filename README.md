@@ -49,7 +49,7 @@
 }
 ```
 
-## BAnco de dados
+## Banco de dados
 
 MySQL - dados devem ser inseridos no arquivo .env
 
